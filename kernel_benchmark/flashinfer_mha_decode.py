@@ -109,7 +109,7 @@ def decode_attention_flashinfer(kv_cache_dtype, num_attention_heads, num_kv_head
 
 def main(args):
     config = ModelConfig(args.config_path)
-    fp16_tflops = 148
+    fp16_tflops = args.fp16_tflops
     head_dim = config.head_dim
     num_attention_heads = config.num_attention_heads // args.tp_size
     num_kv_heads = config.num_key_value_heads // args.tp_size
@@ -183,6 +183,8 @@ def main(args):
             "  ",
             num_kv_heads,
             "  ",
+            head_dim,
+            "  ",
             batch_size,
             "  ",
             kv_len,
@@ -226,6 +228,9 @@ if __name__ == "__main__":
         required=False,
     )
     parser.add_argument("--tp-size", type=int, default=1, help="tp size")
+    parser.add_argument(
+        "--fp16-tflops", type=int, default=148, help="GPU FP16 TFLOPS size"
+    )
 
     args = parser.parse_args()
     main(args)

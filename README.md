@@ -3,10 +3,8 @@
 InferSim is a lightweight simulator for LLM inference, written in pure Python without any 3rd-party depenencies. It calculates the TTFT, TPOT and throughput TGS (tokens/GPU/second) based on computation complexity FLOPs (Floating-Point Operations), GPU computing power FLOPS (Floating-Point Operations per Second), GPU memory bandwidth and MFU (Model FLOPs Utilization) obtained by benchmarking the state-of-the-art LLM kernels. For multi-GPU, multi-node deployment, InferSim also estimates the communication latency according to data volume and bandwidth.
 
 The main use cases of InferSim include:
-- **Model-Sys co-design**: predicting inference performance given the hyper-
-parameters of a model.
-- **Inference performance analysis**: quantifying performance bottlenecks, such
-as compute-bound or IO-bound, and supporting optimization efforts.
+- **Model-Sys co-design**: predicting inference performance given the hyperparameters of a model.
+- **Inference performance analysis**: quantifying performance bottlenecks, such as compute-bound or IO-bound, and supporting optimization efforts.
 
 For more details, please check [InferSim Technical Report](https://github.com/user-attachments/files/22580184/infersim_tech_report.pdf).
 
