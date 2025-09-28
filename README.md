@@ -1,10 +1,12 @@
-# InferSim: A lightweight LLM inference simulator
+# InferSim: A Lightweight LLM Inference Performance Simulator
 
-InferSim is a lightweight simulator for LLM inference, writen in pure Python without 3rd-party depenencies. It calculates the TTFT, TPOT and throughput (TGS i.e. tokens/GPU/second) based on computation complexity (FLOPs), GPU computing power (FLOPS), GPU memory bandwidth and MFU (Gathered from SOTA kernel benchmarks). InferSim also estimates the communication latency according to data size and bandwidth.
+InferSim is a lightweight simulator for LLM inference, writen in pure Python without any 3rd-party depenencies. It calculates the TTFT, TPOT and throughput TGS (tokens/GPU/second) based on computation complexity FLOPs (Floating-Point Operations), GPU computing power FLOPS (Floating-Point Operations per Second), GPU memory bandwidth and MFU (Model FLOPs Utilization) obtained by benchmarking the state-of-the-art LLM kernels. For multi-GPU, multi-node deployment, InferSim also estimates the communication latency according to data volume and bandwidth.
 
 The main use cases of InferSim include:
-- **Model-Sys co-design**: Evaluating the inference perfomance given the model hyperparameters.
-- **Inference performance analysis**: Assisting in identifying performance bottlenecks, such as compute-bound and IO-bound scenarios, and supporting optimization efforts.
+- **Model-Sys co-design**: predicting inference performance given the hyper-
+parameters of a model.
+- **Inference performance analysis**: quantifying performance bottlenecks, such
+as compute-bound or IO-bound, and supporting optimization efforts.
 
 ## Simulation Result
 
@@ -82,25 +84,26 @@ Output seq len:                          2048
 Target decode batchsize:                 100
 Target per-token KV cache size (KB):     103.79
 Current per-token KV cache size (KB):    96.00
-----------------------GFLOPs----------------------
+----------------------FLOPs-----------------------
 Num hidden layers:                       48
-Per-token per-layer attn core:           0.08
-Per-token per-layer MoE:                 0.08
-Per-token per-layer others:              0.04
-Per-token attn core:                     4.03
-Per-token MoE:                           3.62
-Per-token others:                        1.81
+Per-token per-layer attn core (GFLOPs):  0.08
+Per-token per-layer MoE/FFN (GFLOPs):    0.08
+Per-token per-layer others (GFLOPs):     0.04
+Per-token attn core (GFLOPs):            4.03
+Per-token MoE (GFLOPs):                  3.62
+Per-token others (GFLOPs):               1.81
+Per-token total (GFLOPs):                9.46
 ---------------------Decoding---------------------
 Attn core MFU:                           0.15
 Attn core latency (us):                  361.77
 KV loading latency (us):                 298.02
 QKV_proj latency (us):                   31.03
 O_proj latency (us):                     16.95
-Routed experts MFU:                      0.18
-Routed experts latency (us):             269.28
+Routed experts/FFN MFU:                  0.18
+Routed experts/FFN latency (us):         269.28
 Experts loading latency (us):            85.83
-Comm before MoE (us):                    4.24
-Comm after MoE (us):                     4.24
+Comm before MoE/FFN (us):                4.24
+Comm after MoE/FFN (us):                 4.24
 TPOT (ms):                               38.00
 Throughput (TGS):                        2632
 ```
