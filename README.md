@@ -8,6 +8,8 @@ parameters of a model.
 - **Inference performance analysis**: quantifying performance bottlenecks, such
 as compute-bound or IO-bound, and supporting optimization efforts.
 
+For more details, please check [InferSim Technical Report](https://github.com/user-attachments/files/22580184/infersim_tech_report.pdf).
+
 ## Simulation Result
 
 | Model | GPU | Prefill TGS(Actual) | Prefill TGS(Sim) | Decode TGS(Actual) | Decode TGS(Sim) | Notes |
