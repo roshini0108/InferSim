@@ -128,7 +128,11 @@ def main(args):
     print("{s:{c}^{n}}".format(s="KV Cache", n=50, c="-"))
     print("{:<40} {:<10.2f}".format("KV cache space (GB):", kvcache_mem))
     context_len = args.target_isl + args.target_osl
-    target_bs = math.ceil(args.target_tps * args.target_tpot / 1000)
+
+    if args.decode_bs is None:
+        target_bs = math.ceil(args.target_tgs * args.target_tpot / 1000)
+    else:
+        target_bs = args.decode_bs
     print("{:<40} {:<10}".format("Input seq len:", args.target_isl))
     print("{:<40} {:<10}".format("Output seq len:", args.target_osl))
     print("{:<40} {:<10}".format("Target decode batchsize:", target_bs))
@@ -213,7 +217,15 @@ if __name__ == "__main__":
     parser.add_argument("--world-size", type=int, default=1, help="Num of GPUs")
     parser.add_argument("--num-nodes", type=int, default=1, help="Num of nodes")
     parser.add_argument(
-        "--target-tps", type=float, default=2560, help="Target tokens/s per GPU"
+        "--max-prefill-tokens", type=int, default=4096, help="Max prefill tokens"
+    )
+    parser.add_argument(
+        "--decode-bs",
+        type=int,
+        help="Decoding batchsize. If not specified, bs = tgs * tpot.",
+    )
+    parser.add_argument(
+        "--target-tgs", type=float, default=2560, help="Target tokens/s per GPU"
     )
     parser.add_argument("--target-tpot", type=float, default=50, help="TPOT in ms")
     parser.add_argument(
@@ -221,9 +233,6 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--target-osl", type=int, default=2048, help="Output sequence length, in tokens"
-    )
-    parser.add_argument(
-        "--max-prefill-tokens", type=int, default=4096, help="Max prefill tokens"
     )
     parser.add_argument("--use-fp8-gemm", action="store_true", help="Use fp8 gemm")
     parser.add_argument("--use-fp8-kv", action="store_true", help="Use fp8 kvcache")
