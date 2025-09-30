@@ -29,9 +29,9 @@ For more details, please check [InferSim Technical Report](https://github.com/us
 ```
 $ python3 main.py --help
 usage: main.py [-h] --config-path CONFIG_PATH [--device-type {H20,H800}] [--world-size WORLD_SIZE] [--num-nodes NUM_NODES]
-               [--target-tps TARGET_TPS] [--target-tpot TARGET_TPOT] [--target-isl TARGET_ISL] [--target-osl TARGET_OSL]
-               [--max-prefill-tokens MAX_PREFILL_TOKENS] [--use-fp8-gemm] [--use-fp8-kv] [--enable-deepep] [--enable-tbo]
-               [--sm-ratio SM_RATIO] [--prefill-only] [--decode-only]
+               [--max-prefill-tokens MAX_PREFILL_TOKENS] [--decode-bs DECODE_BS] [--target-tgs TARGET_TGS]
+               [--target-tpot TARGET_TPOT] [--target-isl TARGET_ISL] [--target-osl TARGET_OSL] [--use-fp8-gemm]
+               [--use-fp8-kv] [--enable-deepep] [--enable-tbo] [--sm-ratio SM_RATIO] [--prefill-only] [--decode-only]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -43,7 +43,11 @@ optional arguments:
                         Num of GPUs
   --num-nodes NUM_NODES
                         Num of nodes
-  --target-tps TARGET_TPS
+  --max-prefill-tokens MAX_PREFILL_TOKENS
+                        Max prefill tokens
+  --decode-bs DECODE_BS
+                        Decoding batchsize. If not specified, bs = tgs * tpot.
+  --target-tgs TARGET_TGS
                         Target tokens/s per GPU
   --target-tpot TARGET_TPOT
                         TPOT in ms
@@ -51,8 +55,6 @@ optional arguments:
                         Input sequence length, in tokens
   --target-osl TARGET_OSL
                         Output sequence length, in tokens
-  --max-prefill-tokens MAX_PREFILL_TOKENS
-                        Max prefill tokens
   --use-fp8-gemm        Use fp8 gemm
   --use-fp8-kv          Use fp8 kvcache
   --enable-deepep       Enable DeepEP
